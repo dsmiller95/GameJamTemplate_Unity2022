@@ -13,3 +13,16 @@ Including but not limited to:
 - Player-prefs style save system [SaveSystem](Assets/PluginsDev/SaveSystem/README.md)
 - Volume slider script in Scripts/Audio, with a preconfigured audio mixer
 - Asset postprocessing utility in Scripts/Editor/CustomPostprocessor
+
+
+
+## Setup
+
+- Use the template to create a new repository
+- Clone the repository
+- Open the project in Unity
+  - It will warn you about compilation errors.
+  - DO NOT enter safe mode. instead, select "ignore", and let the project load.
+  - After loading, it should no longer have compiler errors.
+  - This is because nugetforunity must load and then download the packages which the rest of the project compiles against.
+- Get to work!
