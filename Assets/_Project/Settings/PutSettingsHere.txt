@@ -1,0 +1,4 @@
+Global project-wide settings, such as
+- Input Action Asset for the new input system
+- Universal Render Pipeline Asset for the new render pipeline
+- anything else that is one-off and has no other place to live

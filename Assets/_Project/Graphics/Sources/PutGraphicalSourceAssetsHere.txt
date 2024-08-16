@@ -1,0 +1,3 @@
+Graphical source assets, for example:
+- Aseprite .aseprite or .ase files
+- Photoshop .psd files
