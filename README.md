@@ -20,6 +20,8 @@ Including but not limited to:
 
 - Use the template to create a new repository
 - Clone the repository
+- Set up git lfs
+  - `git lfs install`
 - Open the project in Unity
   - It will warn you about compilation errors.
   - DO NOT enter safe mode. instead, select "ignore", and let the project load.
