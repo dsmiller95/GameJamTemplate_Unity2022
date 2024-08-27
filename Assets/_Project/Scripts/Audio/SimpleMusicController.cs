@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// TODO: unify this with PxLib audio system
+/// </summary>
 public class SimpleMusicController : MonoBehaviour
 {
     [SerializeField] private AudioSource source;

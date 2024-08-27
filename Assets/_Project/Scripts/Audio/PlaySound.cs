@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+
+/// <summary>
+/// TODO: unify this with PxLib audio system
+/// </summary>
 public class PlaySound : MonoBehaviour
 {
     [SerializeField] private AudioClip[] sounds;

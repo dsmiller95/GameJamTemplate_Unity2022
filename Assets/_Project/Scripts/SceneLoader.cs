@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// TODO: document
+/// </summary>
 public class SceneLoader : MonoBehaviour
 {
     public bool randomScene;
