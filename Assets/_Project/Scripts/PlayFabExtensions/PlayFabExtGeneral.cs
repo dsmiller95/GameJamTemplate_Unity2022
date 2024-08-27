@@ -1,5 +1,6 @@
 using System.Linq;
 using Cysharp.Threading.Tasks;
+using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine;
 using static PlayFabExtensions.PlayFabClientHelpers;
@@ -44,6 +45,12 @@ namespace PlayFabExtensions
             {
                 Debug.Log($"PlayFab: updated name to {playerName}");
             }
+        }
+
+        public static async UniTask<string> GetPlayfabUserId()
+        {
+            if (!await WaitForPlayFabAvailable()) return null;
+            return PlayFabSettings.staticPlayer.PlayFabId;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace PlayFabExtensions
                 DontDestroyOnLoad(gameObject);
         }
 
-#if !UNITY_EDITOR
+//#if !UNITY_EDITOR
         private void Start()
         {
             if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId))
@@ -53,19 +53,25 @@ namespace PlayFabExtensions
             };
             PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
         }
-
-        
         
 
         private void OnApplicationQuit()
         {
+            var body = new Dictionary<string, object>()
+            {
+                { "Time Played", Time.realtimeSinceStartup },
+                { "Returning Player", returningPlayer },
+                { "Version", Application.version }
+            };
+
+            var statProviders = this.GetComponents<IPlayfabExtraDataProvider>();
+            foreach (IPlayfabExtraDataProvider statProvider in statProviders)
+            {
+                statProvider.AddExtraForApplicationQuit(body);
+            }
             PlayFabClientAPI.WritePlayerEvent(new WriteClientPlayerEventRequest()
                 {
-                    Body = new Dictionary<string, object>() {
-                        { "Time Played", Time.realtimeSinceStartup },
-                        { "Returning Player", returningPlayer },
-                        { "Version", Application.version }
-                    },
+                    Body = body,
                     EventName = "game_quit"
                 },
                 result => Debug.Log("Success"),
@@ -84,7 +90,7 @@ namespace PlayFabExtensions
                 },
                 EventName = "game_start"
             };
-            PlayFabClientExtensions.AttemptLogEventAsync(postLoginEvent).Forget();
+            PlayFabExtGeneral.AttemptLogEventAsync(postLoginEvent).Forget();
         }
 
         private void OnLoginFailure(PlayFabError error)
@@ -94,6 +100,6 @@ namespace PlayFabExtensions
         }
 
         
-#endif
+//#endif
     }
 }
