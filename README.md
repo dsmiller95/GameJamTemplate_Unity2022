@@ -15,7 +15,6 @@ Including but not limited to:
 - Asset postprocessing utility in Scripts/Editor/CustomPostprocessor
 
 
-
 ## Setup
 
 - Use the template to create a new repository
@@ -28,3 +27,21 @@ Including but not limited to:
   - After loading, it should no longer have compiler errors.
   - This is because nugetforunity must load and then download the packages which the rest of the project compiles against.
 - Get to work!
+
+
+### Using this template 
+
+After creating a new repo from this template, make sure that the big files are imported as LFS.
+
+run these commands:
+```
+git lfs install
+git lfs migrate import --include="*.dll,*.png,*.jpg,*.pdf,*.ttf" --include-ref=HEAD~0
+git lfs ls-files
+git push --force
+cd ..
+rm -rf <repo folder name>
+git clone <repo url>
+```
+
+Open the project up in unity
