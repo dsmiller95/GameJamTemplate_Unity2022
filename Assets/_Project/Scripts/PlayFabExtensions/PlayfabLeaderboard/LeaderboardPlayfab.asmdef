@@ -1,0 +1,19 @@
+{
+    "name": "PlayfabLeaderboard",
+    "rootNamespace": "PlayfabLeaderboard",
+    "references": [
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:0da6d172d18a54e4389d0dce1e1ffdf2",
+        "GUID:87b663e3cd4fd2f42a49338ca40d79bd",
+        "GUID:64328cd1a967fa14ab5e3533b5d6f919"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
