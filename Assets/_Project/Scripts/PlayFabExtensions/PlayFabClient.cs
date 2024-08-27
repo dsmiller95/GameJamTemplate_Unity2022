@@ -9,14 +9,22 @@ namespace PlayFabExtensions
 {
     public class PlayFabClient : MonoBehaviour
     {
+        [SerializeField] private string titleId;
+        [SerializeField] private bool dontDestroyOnLoad = false;
         private bool returningPlayer = true;
 
+        private void OnEnable()
+        {
+            if(dontDestroyOnLoad)
+                DontDestroyOnLoad(gameObject);
+        }
+
 #if !UNITY_EDITOR
-        public void Start()
+        private void Start()
         {
             if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId))
             {
-                PlayFabSettings.staticSettings.TitleId = "Takoyaki Volleyball Club";
+                PlayFabSettings.staticSettings.TitleId = titleId;
             }
 
             var playerIdProvider = ProvidePlayerIdFactory.Instance;
