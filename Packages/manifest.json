@@ -45,7 +45,8 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "com.dman.foundation": "0.1.0"
   },
   "scopedRegistries": [
     {
@@ -53,6 +54,7 @@
       "url": "https://package.openupm.com",
       "scopes": [
         "com.cysharp.unitask",
+        "com.dman.foundation",
         "com.dman.utilities",
         "com.github-glitchenzo.nugetforunity"
       ]

@@ -16,6 +16,17 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
+    "com.dman.foundation": {
+      "version": "0.1.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.dman.utilities": "0.7.0",
+        "com.unity.nuget.newtonsoft-json": "3.0.2",
+        "com.cysharp.unitask": "2.5.5"
+      },
+      "url": "https://package.openupm.com"
+    },
     "com.dman.utilities": {
       "version": "0.7.0",
       "depth": 0,
