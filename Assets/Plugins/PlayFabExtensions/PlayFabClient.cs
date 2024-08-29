@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Cysharp.Threading.Tasks;
 using PlayFab;
 using PlayFab.ClientModels;
@@ -9,8 +10,12 @@ namespace PlayFabExtensions
 {
     public class PlayFabClient : MonoBehaviour
     {
-        [SerializeField] private string titleId;
         [SerializeField] private bool dontDestroyOnLoad = false;
+        
+        [Tooltip("when true, will use the production playfab environment even in the editor")]
+        [SerializeField] private bool forceUseProdSettings;
+        [SerializeField] private PlayFabSharedSettings developmentPlayfabSettings;
+        
         private bool returningPlayer = true;
 
         private void OnEnable()
@@ -18,15 +23,16 @@ namespace PlayFabExtensions
             if(dontDestroyOnLoad)
                 DontDestroyOnLoad(gameObject);
         }
-
-//#if !UNITY_EDITOR
+        
         private void Start()
         {
-            if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId))
+#if UNITY_EDITOR
+            if (!forceUseProdSettings)
             {
-                PlayFabSettings.staticSettings.TitleId = titleId;
+                ForceSetPlayfabSharedSettings(developmentPlayfabSettings);
             }
-
+#endif
+            
             var playerIdProvider = ProvidePlayerIdFactory.Instance;
             Guid? userId = playerIdProvider.GetPlayerId();
             if (!userId.HasValue)
@@ -54,6 +60,15 @@ namespace PlayFabExtensions
             PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
         }
         
+        private void ForceSetPlayfabSharedSettings(PlayFabSharedSettings newSettings)
+        {
+            var property = typeof(PlayFabSettings).GetField("_playFabShared", BindingFlags.Static | BindingFlags.NonPublic);
+            if (property == null)
+            {
+                throw new Exception("Could not find or set PlayFabSharedSettings");
+            }
+            property.SetValue(null, newSettings);
+        }
 
         private void OnApplicationQuit()
         {
@@ -98,8 +113,5 @@ namespace PlayFabExtensions
             Debug.LogError("PlayFab could not connect:");
             Debug.LogError(error.GenerateErrorReport());
         }
-
-        
-//#endif
     }
 }

@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7193a486e6f449fa016529f4cf0f75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleId: GameJamTemplate
+  dontDestroyOnLoad: 1
+  forceUseProdSettings: 0
+  developmentPlayfabSettings: {fileID: 11400000, guid: dda476353a7ecd446baf7e1694683eba, type: 2}
